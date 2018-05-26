@@ -38,3 +38,8 @@ class Comment(db.Model):
     id = db.Column(db.Integer,primary_key = True)
     body = db.Column(db.String)
     time_posted = db.Column(db.DateTime)
+
+class Subscription(db.Model):
+    __tablename__ = 'subscriptions'
+    email = db.Column(db.String)
+    name = db.Column(db.String)
