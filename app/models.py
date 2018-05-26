@@ -26,3 +26,10 @@ class Writer(db.Model):
     def verify_password(self, password):
         return check_password_hash(self.pass_secure, password)
 
+class Post(db.Model):
+    __tablename__ = 'posts'
+    id = db.Column(db.Integer,primary_key = True)
+    title = db.Column(db.String)
+    body = db.Column(db.String)
+    time_posted = db.Column(db.DateTime)
+
