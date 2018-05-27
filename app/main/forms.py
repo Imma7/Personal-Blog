@@ -13,3 +13,7 @@ class CommentForm(FlaskForm):
     body = TextAreaField('Comment', validators=[Required()])
     submit = SubmitField()
 
+#Subscription Form
+class SubscriptionForm(FlaskForm):
+    email = TextAreaField('Email')
+    submit = SubmitField()
