@@ -9,3 +9,7 @@ class PostForm(FlaskForm):
     submit = SubmitField('Submit Post')
 
 #Comment Form
+class CommentForm(FlaskForm):
+    body = TextAreaField('Comment', validators=[Required()])
+    submit = SubmitField()
+
