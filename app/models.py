@@ -2,9 +2,9 @@ from . import db
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy.sql import func
-from flask_login import UserMixin
+# from flask_login import UserMixin
 
-class User(UserMixin,db.Model):
+class User(db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer,primary_key = True)
     username = db.Column(db.String(255))
@@ -54,6 +54,7 @@ class Comment(db.Model):
 
 class Subscription(db.Model):
     __tablename__ = 'subscriptions'
+    id = db.Column(db.Integer,primary_key = True)
     email = db.Column(db.String)
     name = db.Column(db.String)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
