@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtfforms import StringField,TextAreaField,RadioField,SubmitField,SelectField,ValidationError
-from wtfforms.validators import Required
+from wtforms import StringField,TextAreaField,RadioField,SubmitField,SelectField,ValidationError
+from wtforms.validators import Required
 
 #Post Form
 class PostForm(FlaskForm):
@@ -19,7 +19,7 @@ class SubscriptionForm(FlaskForm):
     submit = SubmitField()
 
     def validate_email(self,field):
-        if subscribe.query.filter_by(email=field.data).first():
+        if SubscriptionForm.query.filter_by(email=field.data).first():
             raise ValidationError('Email exists')
 
 class UpdatePost(FlaskForm):
