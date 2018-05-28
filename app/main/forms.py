@@ -17,3 +17,11 @@ class CommentForm(FlaskForm):
 class SubscriptionForm(FlaskForm):
     email = TextAreaField('Email')
     submit = SubmitField()
+
+    def validate_email(self,field):
+        if subscribe.query.filter_by(email=field.data).first():
+            raise ValidationError('Email exists')
+
+class UpdatePost(FlaskForm):
+    body = TextAreaField("Update Post", validators=[Required()])
+    submit = SubmitField('Post')
