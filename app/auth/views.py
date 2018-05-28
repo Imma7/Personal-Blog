@@ -11,8 +11,8 @@ def login():
     '''
     Function that checks if the form is validated
     '''
-    # if current_user.is_authenticated:
-    #     return redirect(url_for('main.index'))
+    if current_writer.is_authenticated:
+        return redirect(url_for('main.index'))
 
     login_form = LoginForm()
     if login_form.validate_on_submit():
@@ -31,16 +31,15 @@ def register():
     '''
     Registration function
     '''
-    if current_user.is_authenticated:
+    if current_writer.is_authenticated:
         return redirect(url_for('main.index'))
     form =RegistrationForm()
     if form.validate_on_submit():
-        user =User(email=form.email.data,username=form.username.data,password=form.password.data)
-        db.session.add(user)
+        writer =Writer(email=form.email.data,name=form.username.data,password=form.password.data)
+        db.session.add(writer)
         db.session.commit()
 
         return redirect(url_for('auth.login'))
-    title="Registration"
     return render_template('auth/register.html',registration_form=form)
 
 #logout function
