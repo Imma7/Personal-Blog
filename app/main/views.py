@@ -28,22 +28,22 @@ def index():
     return render_template('index.html', posts=posts)
 
 @main.route('/post', methods=['GET','POST'])
-def post():
-    '''
-    Post page
-    '''
-    post_form = PostForm()
+# def post():
+#     '''
+#     Post page
+#     '''
+#     post_form = PostForm()
     
-    if post_form.validate_on_submit():
-        title = post_form.title.data
-        body = post_form.body.data
-        # time_posted = post_form.time_posted.data
-        new_post = Post(title=title, body=body)
-        db.session.add(new_post)
-        db.session.commit()
-        return redirect(url_for('main.index'))
+#     if post_form.validate_on_submit():
+#         title = post_form.title.data
+#         body = post_form.body.data
+#         # time_posted = post_form.time_posted.data
+#         new_post = Post(title=title, body=body)
+#         db.session.add(new_post)
+#         db.session.commit()
+#         return redirect(url_for('main.index'))
 
-    return render_template('post.html', post_form=post_form)
+#     return render_template('post.html', post_form=post_form)
 
 def new_post():
     '''
@@ -64,7 +64,7 @@ def new_post():
         return redirect(url_for('main.index'))
 
     title = f'{Post.title}'
-    return render_template('post.html',title= title, body=body )
+    return render_template('post.html',title= title, post_form=post_form)
 
 
 @main.route('/comments/<int:id>', methods=['GET', 'POST'])

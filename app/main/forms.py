@@ -4,8 +4,8 @@ from wtforms.validators import Required
 
 #Post Form
 class PostForm(FlaskForm):
-    title = StringField('Post title')
-    body = TextAreaField('Post Body', validators=[Required()])
+    title = StringField('Post Your Blog')
+    body = TextAreaField('Body', validators=[Required()])
     submit = SubmitField('Submit Post')
 
 #Comment Form

@@ -1,74 +1,63 @@
-{% extends 'base.html'%}
-{% import 'macros.html' as macro %}
+{% extends 'base.html'%} {% import 'macros.html' as macro %} {% block styles%} {{ super() }}
+<!--super() function tells Jinja not to override any code that is defined in the block-->
+<link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}"> {% endblock %} {% block content %}
 
-{% block styles%}
-    {{ super() }} <!--super() function tells Jinja not to override any code that is defined in the block-->
-    <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
-{% endblock %}
-
-
-{% block content %}
- 
-    <!-- <div class="row">
+<!-- <div class="row">
         <img src="/static/images/blog.jpg" style= "margin-right: 100%;padding-right: 100%;">
     </div> -->
-    <br>
-    <div class="container-fluid" style="font-family: 'Russo One', sans-serif;">
-   
-        
-        <div class="container">
-            <div class="content">
-                <div class="title-area">
-
-                    <h1 class="title-modern" style="font-size:10vh;color:rgb(11, 12, 12); text-align: center;padding: 40px">Just Blog It</h1>
-                        
-                    <h3 style="font-size:6vh;color:rgb(10, 10, 10);opacity:0.5; text-align: center;padding: 40px">Published Posts</h2>
-
-                    <hr>
-
-                    <div class="container">
-                        <div class="col-md-2"></div>
-                        <div class="col-md-8">
-                            
-                                <p style="font-size:18px;">The history of political blogging might usefully be divided into the periods pre- and post-Huffington. Before the millionaire socialite Arianna Huffington decided to get in on the act, bloggers operated in a spirit of underdog solidarity. They hated the mainstream media - and the feeling was mutual.</p>
-                            
-                                <hr>
-                                <br>
-                            
-                                <p style="font-size:18px;">Bloggers saw themselves as gadflies, pricking the arrogance of established elites from their home computers, in their pyjamas, late into the night. So when, in 2005, Huffington decided to mobilise her fortune and media connections to create, from scratch, a flagship liberal blog she was roundly derided. Who, spluttered the original bloggerati, did she think she was?</p>
-
-                                <hr>
-                                <br>
-
-                                <p style="font-size:18px;">But the pyjama purists were confounded. Arianna's money talked just as loudly online as off, and the Huffington Post quickly became one of the most influential and popular journals on the web. It recruited professional columnists and celebrity bloggers. It hoovered up traffic. Its launch was a landmark moment in the evolution of the web because it showed that many of the old rules still applied to the new medium: a bit of marketing savvy and deep pockets could go just as far as geek credibility, and get there faster.</p>
-
-                            </div>
-                            <div class="col-md-2">
-                                
-                            </div>
-                 </div>
-            </div>
-        </div>
+<br>
+<div class="container-fluid" style="font-family: 'Russo One', sans-serif;">
 
 
+    <div class="container">
+        <div class="content">
+            <div class="title-area">
 
-                    {% for post in post %}
+                <h1 class="title-modern" style="font-size:10vh;color:rgb(11, 12, 12); text-align: center;padding: 40px">Just Blog It</h1>
 
-                    <hr>
+                <h3 style="font-size:6vh;color:rgb(10, 10, 10);opacity:0.5; text-align: center;padding: 40px">Published Posts</h3>
 
-                    <h3 class="add-category"><a class="btn btn-primary" href="/add/category" style="background-color:#002457; float:right;"><span aria-hidden="true"> ADD CATEGORY </span></a></h3>
+                <hr>
 
-                    <hr>
+                <div class="container">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
 
-                    <li style="list-style-type:none;font-size:2em">{{post.title}}</li>
-                    <p><a href="/posts/{{post.id}}" style="color:rgb(8, 8, 8);">Countinue...</a></p>
-                    {% endfor%}
+                        <p style="font-size:18px;">The history of political blogging might usefully be divided into the periods pre- and post-Huffington.
+                            Before the millionaire socialite Arianna Huffington decided to get in on the act, bloggers operated
+                            in a spirit of underdog solidarity. They hated the mainstream media - and the feeling was mutual.</p>
 
-                    <hr>
+                        <hr>
+                        <br>
 
+                        <p style="font-size:18px;">Bloggers saw themselves as gadflies, pricking the arrogance of established elites from their home
+                            computers, in their pyjamas, late into the night. So when, in 2005, Huffington decided to mobilise
+                            her fortune and media connections to create, from scratch, a flagship liberal blog she was roundly
+                            derided. Who, spluttered the original bloggerati, did she think she was?
+                        </p>
+
+                        <hr>
+                        <br>
+
+                        <p style="font-size:18px;">But the pyjama purists were confounded. Arianna's money talked just as loudly online as off, and
+                            the Huffington Post quickly became one of the most influential and popular journals on the web.
+                            It recruited professional columnists and celebrity bloggers. It hoovered up traffic. Its launch
+                            was a landmark moment in the evolution of the web because it showed that many of the old rules
+                            still applied to the new medium: a bit of marketing savvy and deep pockets could go just as far
+                            as geek credibility, and get there faster.</p>
+
+                        <hr>
+                        <br>
+
+
+                    </div>
+                    <div class="col-md-2"></div>
                 </div>
             </div>
         </div>
-    </div> 
-          
+
+
+    </div>
+</div>
+
 {% endblock %}
