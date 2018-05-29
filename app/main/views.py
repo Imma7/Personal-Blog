@@ -19,8 +19,8 @@ def load_user(user_id):
 def index():
     
     # if post.validate_on_submit():
-    #     title = post.title.data
-    #     body = post.body.data
+    # title = post.title.data,
+    # body = post.body.data
 
     posts=Post.query.all()
 
@@ -44,6 +44,26 @@ def post():
 
     return render_template('post.html', post_form=post_form)
 
+def new_post():
+    '''
+    New Post Page
+    '''
+    post_form = PostForm
+
+    if post_form.validate_on_submit():
+        title = post_form.title.data
+        body = post_form.body.data
+
+
+        # updated review instance
+        new_post = Post(title=title,body = body,user_id=current_user.id)
+
+        #save review method
+        new_post.save_post()
+        return redirect(url_for('.index'))
+
+    title = f'{Post.title}'
+    return render_template('posts.html',title= title, body=body )
 
 
 @main.route('/comments/<int:id>', methods=['GET', 'POST'])
