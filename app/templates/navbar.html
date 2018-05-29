@@ -18,10 +18,15 @@
         <div class="col-md-3">
             <ul class="nav navbar-nav navbar-right">
                 {% if current_user.is_authenticated %}
-                    <li style="color:black; font-weight:bolder;">{{current_user.username}}</li>
-                    <li><a href="{{url_for('auth.logout')}}" style="color:black; font-weight:bolder;">Sign out</a></li>
-                    {% else %}
-                    <li><a href="{{url_for('auth.login')}}" style="color:black; font-weight:bolder;">Sign in</a></li>
+                  <li><a href="{{url_for('main.post')}}" style="color:black; font-weight:bolder;">Post It</a></li>
+
+                  <li style="color:black; font-weight:bolder;">{{current_user.username}}</li>
+
+                  <li><a href="{{url_for('auth.logout')}}" style="color:black; font-weight:bolder;">Sign out</a></li>
+
+                  {% else %}
+
+                  <li><a href="{{url_for('auth.login')}}" style="color:black; font-weight:bolder;">Sign in</a></li>
                 {%endif%}
             </ul>
         </div>

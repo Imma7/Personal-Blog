@@ -64,17 +64,16 @@ class Post(db.Model):
     id = db.Column(db.Integer,primary_key = True)
     title = db.Column(db.String)
     body = db.Column(db.String)
-    time_posted = db.Column(db.DateTime)
     writer_id = db.Column(db.Integer, db.ForeignKey('writers.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     comments = db.relationship('Comment', backref = 'post', lazy = "dynamic")
 
     all_posts = []
     
-    def __init__(self,title,body,time_posted):
+    def __init__(self,title,body):
         self.title = title
         self.body = body
-        self.time_posted = time_posted
+        
 
     def save_post(self):
         '''
@@ -98,7 +97,6 @@ class Comment(db.Model):
     __tablename__ = 'comments'
     id = db.Column(db.Integer,primary_key = True)
     body = db.Column(db.String)
-    time_posted = db.Column(db.DateTime)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
     writer_id = db.Column(db.Integer, db.ForeignKey('writers.id'))

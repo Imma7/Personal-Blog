@@ -33,11 +33,12 @@ def post():
     Post page
     '''
     post_form = PostForm()
+    
     if post_form.validate_on_submit():
         title = post_form.title.data
         body = post_form.body.data
-        time_posted = post_form.time_posted.data
-        new_post = Post(title=title, body=body, time_posted=time_posted)
+        # time_posted = post_form.time_posted.data
+        new_post = Post(title=title, body=body)
         db.session.add(new_post)
         db.session.commit()
         return redirect(url_for('main.index'))
@@ -48,7 +49,7 @@ def new_post():
     '''
     New Post Page
     '''
-    post_form = PostForm
+    post_form = PostForm()
 
     if post_form.validate_on_submit():
         title = post_form.title.data
@@ -56,14 +57,14 @@ def new_post():
 
 
         # updated review instance
-        new_post = Post(title=title,body = body,user_id=current_user.id)
+        new_post = Post(title=title,body = body)
 
         #save review method
         new_post.save_post()
-        return redirect(url_for('.index'))
+        return redirect(url_for('main.index'))
 
     title = f'{Post.title}'
-    return render_template('posts.html',title= title, body=body )
+    return render_template('post.html',title= title, body=body )
 
 
 @main.route('/comments/<int:id>', methods=['GET', 'POST'])
